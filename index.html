@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>李明祺 · 简历 | 深圳职业技术大学</title>
+    <!-- 使用简洁现代的风格，兼容移动端 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Segoe UI', 'Roboto', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #1f2d3d;
+            padding: 2rem 1rem;
+        }
+
+        /* 主容器卡片 */
+        .resume-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* 头部区域（深色点缀） */
+        .header-gradient {
+            background: linear-gradient(135deg, #1a3c5c 0%, #2b5c7e 100%);
+            padding: 2rem 2rem 1.8rem 2rem;
+            color: white;
+        }
+
+        .name-title h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 0.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #e0edf5;
+        }
+
+        .contact-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 主要内容布局：两栏 (左侧基础信息/证书/技能，右侧经历) */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 0;
+        }
+
+        /* 左侧面板 */
+        .sidebar {
+            background: #f8fafc;
+            padding: 1.8rem 1.6rem;
+            border-right: 1px solid #e4e9f0;
+        }
+
+        .main-content {
+            padding: 1.8rem 2rem;
+            background: white;
+        }
+
+        /* 模块样式 */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e4663;
+            border-left: 4px solid #2b7a62;
+            padding-left: 12px;
+            margin-bottom: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e4e;
+            display: inline-block;
+            min-width: 70px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: white;
+            border: 1px solid #cbdbe0;
+            padding: 0.25rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1f4970;
+            transition: 0.1s;
+        }
+
+        .cert-tag {
+            background: #eef3fc;
+            border-color: #bdd4e8;
+            color: #15507b;
+        }
+
+        /* 经历卡片 */
+        .exp-item {
+            margin-bottom: 1.6rem;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 1.2rem;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 1.08rem;
+            color: #0f2c3f;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            color: #5d6f83;
+            background: #eff3f6;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        .exp-sub {
+            font-weight: 600;
+            color: #2b7a62;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-desc {
+            font-size: 0.9rem;
+            color: #2c3f4f;
+            margin-top: 6px;
+            line-height: 1.45;
+        }
+
+        .volunteer-highlight {
+            background: #eef7f3;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1a684f;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #e0e7ed, transparent);
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: 0;
+                border-bottom: 1px solid #e4e9f0;
+            }
+            .name-title h1 {
+                font-size: 2rem;
+            }
+            .header-gradient {
+                padding: 1.5rem;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                padding: 1.5rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume-card {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .tag {
+                background: #f0f0f0;
+            }
+        }
+
+        /* 小点缀 */
+        .footnote {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #8ba0b0;
+            margin-top: 1.2rem;
+            padding-bottom: 1rem;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-card">
+        <!-- 头部：姓名 + 基本信息 -->
+        <div class="header-gradient">
+            <div class="name-title">
+                <h1>李明祺</h1>
+                <div style="margin-top: 6px;">
+                    <span class="badge">📖 应用德语专业</span>
+                    <span class="badge">🎓 大专 · 2025届</span>
+                    <span class="badge">⚽ 国家三级足球裁判员</span>
+                </div>
+            </div>
+            <div class="contact-row">
+                <span>📅 20岁 · 男</span>
+                <span>📍 中国 · 深圳</span>
+                <span>📧 limingqi@stu.szpt.edu.cn</span>
+                <span>📞 (+86) 138-0001-2323</span>
+            </div>
+        </div>
+
+        <!-- 主体双栏信息 -->
+        <div class="resume-grid">
+            <!-- 左侧：个人信息/证书/语言&技能 -->
+            <div class="sidebar">
+                <!-- 教育背景 -->
+                <div class="section">
+                    <div class="section-title">🎓 教育背景</div>
+                    <div class="info-item">
+                        <div><strong>深圳职业技术大学</strong> (SZPU)</div>
+                        <div style="font-size: 0.9rem; color: #4a627a;">应用德语专业 · 全日制大专</div>
+                        <div style="font-size: 0.85rem; color: #547087;">2022年9月 — 2025年6月 (预计毕业)</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">主修课程：综合德语、商务德语、跨文化交际、会展德语等</div>
+                    </div>
+                </div>
+
+                <!-- 证书及语言 -->
+                <div class="section">
+                    <div class="section-title">📜 证书与能力</div>
+                    <div class="tag-list">
+                        <span class="tag cert-tag">📘 大学英语四级 (CET-4)</span>
+                        <span class="tag cert-tag">🎙️ 普通话二甲 (二级甲等)</span>
+                        <span class="tag cert-tag">⚽ 足球三级裁判员证书</span>
+                        <span class="tag cert-tag">📄 全国计算机等级考试一级</span>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <div><span style="font-weight: 600;">语言能力：</span> 德语 (基础读写/日常会话) · 英语 (读写良好，基础商务) · 普通话(二级甲等/标准)</div>
+                        <div style="margin-top: 6px;"><span style="font-weight: 600;">其他技能：</span> MS Office办公软件、活动策划基础、拍摄剪辑/会议协助、文案撰写</div>
+                    </div>
+                </div>
+
+                <!-- 性格/自我评价 -->
+                <div class="section">
+                    <div class="section-title">🌟 自我评价</div>
+                    <div style="font-size: 0.9rem; line-height: 1.5; color: #2c4a6e;">
+                        积极乐观，细致负责，具备较强的团队协作能力和执行力。热爱体育与会展行业，拥有跨领域实践经历 (零售/会展/志愿者)。善于沟通且适应多任务工作环境，致力于不断提升职业素养。
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="section">
+                    <div class="section-title">🏅 兴趣爱好</div>
+                    <div class="tag-list">
+                        <span class="tag">⚽ 足球/裁判实践</span>
+                        <span class="tag">📷 摄影&记录</span>
+                        <span class="tag">🌍 跨文化交流</span>
+                        <span class="tag">📖 德语影视</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：实习/工作经历 + 志愿者/项目 -->
+            <div class="main-content">
+                <!-- 工作&实习经历 -->
+                <div class="section">
+                    <div class="section-title">💼 工作与实习经历</div>
+                    
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">山姆会员商店 · 销售助理 (实习)</span>
+                            <span class="exp-date">2023.12 – 2024.08</span>
+                        </div>
+                        <div class="exp-sub">山姆会员商店 (深圳福田店)  | 电商/前台支持</div>
+                        <div class="exp-desc">
+                            • 负责会员接待与商品咨询，日均服务约80+会员，客户满意度反馈优秀；<br>
+                            • 协助线上订单拣货及库存盘点，参与高峰期大促运营，提升订单履约效率；<br>
+                            • 参与店内陈列调整及促销活动布置，培养了严谨的工作态度与团队协作能力。
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">会展活动协助策划 (项目助理)</span>
+                            <span class="exp-date">2024.03 – 2024.10</span>
+                        </div>
+                        <div class="exp-sub">深圳国际会展中心 · 展会活动组 (实习/外包项目)</div>
+                        <div class="exp-desc">
+                            • 协助“大湾区国际消费电子展”与“深圳礼品展”前期筹备及现场执行，负责展商引导与物料管理；<br>
+                            • 参与活动流程优化，负责观众动线图绘制及志愿者调度，累计服务参展商超200家；<br>
+                            • 负责展后数据整理与会务复盘，获得活动主管高度评价，锻炼了多线程统筹及应变能力。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 志愿者及赛事相关 -->
+                <div class="section">
+                    <div class="section-title">🤝 志愿者经历</div>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">粤超联赛 · 赛事志愿者</span>
+                            <span class="exp-date">2024.05 – 2024.07</span>
+                        </div>
+                        <div class="exp-sub">广东省五人制足球超级联赛 (粤超) 组委会</div>
+                        <div class="exp-desc">
+                            • 负责赛场秩序维护、运动员检录及现场播报协助，保障比赛顺利进行；<br>
+                            • 配合裁判组完成辅助工作，利用足球裁判知识协助数据记录，获得赛事方认可；<br>
+                            • 累计服务10+个比赛日，深刻理解大型体育赛事流程与团队精神。
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">校园/社区志愿活动</span>
+                            <span class="exp-date">2023 – 至今</span>
+                        </div>
+                        <div class="exp-desc">
+                            • 深圳职业技术大学“德语角”志愿者，组织文化交流活动，协助外教进行趣味分享；<br>
+                            • 参与社区公益足球青训教学，持有裁判证书辅助青少年比赛执法，传递运动热情。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 额外项目/荣誉，体现足球裁判专业性+会展协助亮点 -->
+                <div class="section">
+                    <div class="section-title">🏆 实践亮点 & 荣誉</div>
+                    <div class="tag-list" style="margin-bottom: 12px;">
+                        <span class="tag" style="background:#EFF6FF;">⚡ 深圳职业技术大学“优秀志愿者”称号 (2024)</span>
+                        <span class="tag" style="background:#EFF6FF;">📄 英语四级证书 · 普通话二甲证书</span>
+                        <span class="tag" style="background:#EFF6FF;">🎓 应用德语专业三等奖学金</span>
+                    </div>
+                    <div class="exp-desc">
+                        • 获得深圳职业技术大学2023年度“文体之星”称号 (足球裁判贡献及赛事组织)；<br>
+                        • 会展活动协助期间设计的《参展商动线优化建议》被项目组采纳，提升展区通行效率；<br>
+                        • 考取足球三级裁判员证书后，多次执裁校内联赛及区级青少年赛事，累计执法场次20+。
+                    </div>
+                </div>
+
+                <!-- 补充：粤超志愿者详细再强调 -->
+                <div class="section">
+                    <div class="section-title">📌 关键技能认证</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <div style="background: #ecfdf5; border-radius: 20px; padding: 6px 14px; font-size: 0.85rem;"><strong>⚽ 足球三级裁判</strong> (广东省足球协会认证)</div>
+                        <div style="background: #ecfdf5; border-radius: 20px; padding: 6px 14px; font-size: 0.85rem;"><strong>📘 CET-4</strong> (英语听读写能力)</div>
+                        <div style="background: #ecfdf5; border-radius: 20px; padding: 6px 14px; font-size: 0.85rem;"><strong>🗣️ 普通话二甲</strong> (二级甲等/91.2分)</div>
+                        <div style="background: #ecfdf5; border-radius: 20px; padding: 6px 14px; font-size: 0.85rem;"><strong>📅 驾照C1</strong> (熟练驾驶)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部优雅联系版权 -->
+        <div class="footnote">
+            📍 深圳职业技术大学 · 应用德语专业 | 李明祺 简历   |  更新于2025年春   |  * 联系方式仅供招聘/实习使用
+        </div>
+    </div>
+    <!-- 可选简单按钮 (不需要额外库) 但保留纯净风格 -->
+</body>
+</html>
